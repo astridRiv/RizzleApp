@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "new log-in app",
+    "slug": "new-log-in",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/mia.JPG",
+    "splash": {
+      "image": "./assets/images/mia.JPG",
+      "resizeMode": "contain",
+      "backgroundColor": "blue"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
