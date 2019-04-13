@@ -5,12 +5,12 @@ A app that does stuff which @astrid will update later
 make sure to do ``npm install`` the first time you run this project and when a library has been added
 to run the project run ``expo start`` in the ``/src`` folder 
 
-# AFTER INSTALL:
+AFTER INSTALL:
 When creating new branch: ``git checkout -b <branch name>``
 to add the new branch to remote do : ``git push --set-upstream origin <branch name>``
 *Please name your branch after your feature i.e ralf-login
 
-# AFTER BRANCH CREATION: 
+AFTER BRANCH CREATION: 
 
 1) Pull from dev to have latest code
 2) Implement your code
