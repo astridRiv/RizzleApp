@@ -11,8 +11,7 @@ to add the new branch to remote do : ``git push --set-upstream origin <branch na
 *Please name your branch after your feature i.e ralf-login
 
 ## AFTER BRANCH CREATION: 
-1. Pull from dev to have latest code <br/> 
-    
+1. GIT PULL so your local branch and remote branch is up to date <br/> 
 2. Implement your code<br/>
 3. Test if code works :)<br/>
 4. If it works, create a pull request in the DEV<br/>
