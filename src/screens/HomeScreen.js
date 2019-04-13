@@ -1,16 +1,20 @@
 import React from 'react';
 import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
+  Container,
+  Header,
+  Content,
+  Footer,
+  Button,
+  Left,
   View,
-} from 'react-native';
-import { WebBrowser } from 'expo';
+  Right,
+  Body,
+  Icon,
+  Text
+} from 'native-base';
+//import { WebBrowser } from 'expo';
 
-import { MonoText } from '../components/StyledText';
+//import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -18,49 +22,79 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
 
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent>
+            <Icon name='menu'/>
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
+            </Button>
+          </Left>
+          <Body>
+            <Title>
+              Headers
+            </Title>
+            </Body>
+            <Right />
+        </Header>
+        <Content>
+          <Text>
+            This is the home page
+          </Text>
+        </Content>
+        <Footer>
+          <FooterTab>
+            <Button> full>
+            <Text>This is my foot</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
+      </Container>
+      // <View style={styles.container}>
+      //   <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      //     <View style={styles.welcomeContainer}>
+      //       <Image
+      //         source={
+      //           __DEV__
+      //             ? require('../assets/images/robot-dev.png')
+      //             : require('../assets/images/robot-prod.png')
+      //         }
+      //         style={styles.welcomeImage}
+      //       />
+      //     </View>
 
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
+      //     <View style={styles.getStartedContainer}>
+      //       {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
+      //       <Text style={styles.getStartedText}>Get started by opening</Text>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+      //       <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
+      //         <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+      //       </View>
 
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+      //       <Text style={styles.getStartedText}>
+      //         Change this text and your app will automatically reload.
+      //       </Text>
+      //     </View>
 
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
-      </View>
+      //     <View style={styles.helpContainer}>
+      //       <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
+      //         <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+      //       </TouchableOpacity>
+      //     </View>
+      //   </ScrollView>
+
+      //   <View style={styles.tabBarInfoContainer}>
+      //     <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+
+      //     <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
+      //       <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
+      //     </View>
+      //   </View>
+      // </View>
     );
   }
 
