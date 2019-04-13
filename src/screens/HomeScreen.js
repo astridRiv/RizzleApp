@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet} from 'react-native';
 import MapView from 'react-native-maps';
 import {
   Container,
@@ -75,8 +75,6 @@ export default class HomeScreen extends React.Component {
           <Text>This is the home page</Text>
           <Button large dark>
             <Text>riddle</Text>
-
-
           </Button>
         </Content>
         <MapView style={styles.map}
@@ -92,6 +90,9 @@ export default class HomeScreen extends React.Component {
             this.setState({ region });
           }}
         />
+        <Button large dark>
+            <Text>testing</Text>
+          </Button>
         <Footer>
         </Footer>
       </Container>
@@ -104,6 +105,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '75%',
-    bottom: 50
+    bottom: 50,
+    alignItems: 'center',
   },
 });
