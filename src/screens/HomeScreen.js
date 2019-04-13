@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 import {
   Container,
@@ -24,28 +25,33 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-    isReady: false
+      isReady: false,
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
     };
-    }
+  }
 
 
-    getInitialState() {
-      return {
-        region: {
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        },
-      };
-    }
-    
-    onRegionChange(region) {
-      this.setState({ region });
-    }
+  getInitialState() {
+
+    return {
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      },
+    };
+  }
+
+
   render() {
 
     return (
@@ -54,7 +60,7 @@ export default class HomeScreen extends React.Component {
         <Header>
           <Left>
             <Button transparent>
-            <Icon name='menu'/>
+              <Icon name='menu' />
 
             </Button>
           </Left>
@@ -62,20 +68,30 @@ export default class HomeScreen extends React.Component {
             <Title>
               DashBoard
             </Title>
-            </Body>
-            <Right />
+          </Body>
+          <Right />
         </Header>
         <Content>
           <Text>This is the home page</Text>
-          <Button large dark> 
+          <Button large dark>
             <Text>riddle</Text>
-            
-  <MapView style={styles.map}
-    region={this.state.region}
-    onRegionChange={this.onRegionChange}
-    />
-            </Button>
+
+
+          </Button>
         </Content>
+        <MapView style={styles.map}
+          region={this.state.region}
+          onRegionChange={() => {
+            let region = {
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }
+
+            this.setState({ region });
+          }}
+        />
         <Footer>
         </Footer>
       </Container>
@@ -86,9 +102,8 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   map: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    width: '100%',
+    height: '75%',
+    bottom: 50
   },
 });
