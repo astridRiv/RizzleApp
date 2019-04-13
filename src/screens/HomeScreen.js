@@ -1,5 +1,5 @@
 import React from 'react';
-
+import MapView from 'react-native-maps';
 import {
   Container,
   Header,
@@ -32,7 +32,20 @@ export default class HomeScreen extends React.Component {
     }
 
 
-
+    getInitialState() {
+      return {
+        region: {
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        },
+      };
+    }
+    
+    onRegionChange(region) {
+      this.setState({ region });
+    }
   render() {
 
     return (
@@ -56,6 +69,11 @@ export default class HomeScreen extends React.Component {
           <Text>This is the home page</Text>
           <Button large dark> 
             <Text>riddle</Text>
+            
+  <MapView style={styles.map}
+    region={this.state.region}
+    onRegionChange={this.onRegionChange}
+    />
             </Button>
         </Content>
         <Footer>
@@ -65,3 +83,12 @@ export default class HomeScreen extends React.Component {
   }
 
 }
+const styles = StyleSheet.create({
+  map: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+});
