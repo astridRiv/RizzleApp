@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity,AlertIOS,} from 'react-native';
 import MapView from 'react-native-maps';
 import {
   Container,
   Header,
   Content,
-  Footer,
   Button,
   Left,
   View,
@@ -14,12 +13,14 @@ import {
   Icon,
   Text,
   Title,
-  FooterTab
 } from 'native-base';
 //import { WebBrowser } from 'expo';
 
 //import { MonoText } from '../components/StyledText';
-
+const screen = Dimensions.get('window');
+const ratio = screen.width/screen.height;
+const lat = 0.0922;
+const longi = lat * ratio;
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -30,11 +31,13 @@ export default class HomeScreen extends React.Component {
     this.state = {
       isReady: false,
       region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }
+        latitude: 25.756464,
+        longitude: -80.37626,
+        latitudeDelta: 0.0043,
+        longitudeDelta: 0.0034,
+      },
+      header: "RIZZLE",
+      information: "Explore the campus of Florida International University and discover all the riddles! "
     };
   }
 
@@ -43,10 +46,10 @@ export default class HomeScreen extends React.Component {
 
     return {
       region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitude: 25.756464,
+        longitude: -80.37626,
+        latitudeDelta: 0.0043,
+        longitudeDelta: 0.0034,
       },
     };
   }
@@ -56,45 +59,41 @@ export default class HomeScreen extends React.Component {
 
     return (
 
-      <Container>
+      <Container style={styles.paraText}>
         <Header>
-          <Left>
-            <Button transparent>
-              <Icon name='menu' />
-
-            </Button>
-          </Left>
           <Body>
-            <Title>
-              DashBoard
+            <Title style={styles.headerText}>
+            {this.state.header}
             </Title>
           </Body>
           <Right />
         </Header>
+
         <Content>
-          <Text>This is the home page</Text>
-          <Button large dark>
-            <Text>riddle</Text>
+          
+        <Button large green>
+            <Text>START</Text>
           </Button>
         </Content>
+
         <MapView style={styles.map}
           region={this.state.region}
           onRegionChange={() => {
             let region = {
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              latitude: 25.756464,
+              longitude: -80.37626,
+              latitudeDelta: lat,
+              longitudeDelta: longi,
             }
 
             this.setState({ region });
           }}
         />
-        <Button large dark>
-            <Text>testing</Text>
-          </Button>
-        <Footer>
-        </Footer>
+
+                  
+                  <Text style={styles.paraText}>
+          {this.state.information}</Text>
+  
       </Container>
     );
   }
@@ -103,9 +102,51 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   map: {
     position: 'absolute',
-    width: '100%',
-    height: '75%',
-    bottom: 50,
+    width: '95%',
+    height: '65%',
+    top:150,
+    bottom: 0,
     alignItems: 'center',
+    borderWidth: 5,
+    borderColor: '#2D3D47',
+    borderRadius: 13,
+    margin: 10,
+    shadowOpacity: 0.4,
+    elevation: 1.5,
+    marginTop: 5,
+    marginBottom: 19,
+    shadowRadius: 1,
+    shadowOffset: {height: 2, width: 0},
+    flex:100,
+    padding: 10,
+    overflow: 'hidden',
+   
+  },
+  headerText: {
+    fontFamily: 'Cochin',
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#01afd1',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    
+    
+  },
+  paraText:{
+    color: '#EFF6F7',
+    backgroundColor: '#A7CFE8',
+  },
+  mainContainer:{
+    flex:300,
+    padding: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    marginVertical: 20,
+    backgroundColor: 'transparent',
+    marginBottom: 400,
   },
 });
