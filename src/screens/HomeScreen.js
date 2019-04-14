@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ImageBackground
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -19,6 +20,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
+    <ImageBackground source={require('../assets/images/3.png')}style={{width: '100%', height: '100%'}}>
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
@@ -61,6 +63,7 @@ export default class HomeScreen extends React.Component {
           </View>
         </View>
       </View>
+    </ImageBackground>
     );
   }
 
@@ -101,7 +104,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
   },
   developmentModeText: {
     marginBottom: 20,
