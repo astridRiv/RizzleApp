@@ -4,7 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import InstructionsScreen from '../screens/InstructionsScreen';
+import RiddlesScreen from '../screens/RiddlesScreen'; //adds riddle nav option
 import SettingsScreen from '../screens/SettingsScreen';
 import LoginView from '../screens/LoginView';
 
@@ -26,12 +27,12 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const InstructionsStack = createStackNavigator({
+  Instructions: InstructionsScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+InstructionsStack.navigationOptions = {
+  tabBarLabel: 'Instructions',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -54,6 +55,21 @@ SettingsStack.navigationOptions = {
   ),
 };
 
+//Adds Riddle nav option
+const RiddlesStack = createStackNavigator({
+  Riddles: RiddlesScreen,
+});
+
+RiddlesStack.navigationOptions = {
+  tabBarLabel: 'Riddles',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+    />
+  ),
+};
+
 const LoginStack = createStackNavigator({
   Login: LoginView
 });
@@ -70,7 +86,8 @@ LoginStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  InstructionsStack,
+  RiddlesStack, //adds riddle nav option
   SettingsStack,
   LoginStack,
 });
