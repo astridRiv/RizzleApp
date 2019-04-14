@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity,Alert,} from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, ImageBackground, ScrollView,Alert,} from 'react-native';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
+
 import {
   Container,
   Header,
@@ -22,9 +23,12 @@ const screen = Dimensions.get('window');
 const ratio = screen.width/screen.height;
 const lat = 0.0922;
 const longi = lat * ratio;
+
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
+    
   };
 
   constructor(props) {
@@ -38,10 +42,26 @@ export default class HomeScreen extends React.Component {
         longitudeDelta: 0.0034,
       },
       header: "Explore FIU",
-      information: "Explore the campus of Florida International University and discover all the riddles! "
+      
+      markers:[
+        {
+          coordinate:{
+            latitude: 25.760146,
+            longitude: -80.373279,
+          },
+          title: "Red Parking Garage",
+          description: "The red place",
+        }
+      ]
     };
   }
 
+  goToInstructions = () =>
+  {
+    Alert.alert('You have started the game')
+    navigate('Links')
+
+  }
 
   getInitialState() {
 
@@ -57,10 +77,11 @@ export default class HomeScreen extends React.Component {
 
 
   render() {
-
+    
     return (
 
       <Container style={styles.paraText}>
+      <ImageBackground source={require('../assets/images/3.png')}style={{width: '100%', height: '100%'}}>
         <Header>
           <Body>
             <View style={styles.mainContainer}>
@@ -76,8 +97,10 @@ export default class HomeScreen extends React.Component {
           <View style={styles.mainContainer}>
         <Button 
                 type="primary"
-                onPress={() => Alert.alert('You have started the game.')}
+                onPress={this.goToInstructions}
                 containerStyle={styles.buttonContainer}
+                title="START"
+              
               >
                 START
           
@@ -97,6 +120,7 @@ export default class HomeScreen extends React.Component {
 
             this.setState({ region });
           }} >
+
           {/* {this.state.markers.map(marker => (
             <Marker
               coordinate={marker.latlng}
@@ -115,7 +139,9 @@ export default class HomeScreen extends React.Component {
           
         </Button>
   </View>
+  </ImageBackground>
       </Container>
+      
     );
   }
 
@@ -152,10 +178,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 200,
     padding: 10,
-    overflow: 'hidden',
-  
-    
-    
+    overflow: 'hidden', 
   },
   paraText:{
     color: '#EFF6F7',
@@ -200,8 +223,12 @@ const styles = StyleSheet.create({
     height: 75,
     right: 70,
    flexWrap: 'wrap',
-  
-
-  }
+  },
+  marker: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "rgba(130,4,150, 0.9)",
+  },
 
 });
