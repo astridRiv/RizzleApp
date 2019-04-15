@@ -1,16 +1,19 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ImageBackground, Alert,} from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, ImageBackground, ScrollView,Alert,} from 'react-native';
 import MapView from 'react-native-maps';
+import {Marker} from 'react-native-maps';
 
 import {
   Container,
   Header,
   Content,
+  Left,
+  View,
   Right,
   Body,
   Title,
 } from 'native-base';
-import Button from 'react-native-flat-button';
+import Button from 'react-native-flat-button'
 const screen = Dimensions.get('window');
 const ratio = screen.width/screen.height;
 const lat = 0.0922;
