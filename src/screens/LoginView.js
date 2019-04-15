@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   StackNavigator,
   StyleSheet,
@@ -10,10 +11,11 @@ import {
   TouchableOpacity,
   Image,
   Alert,
+  ImageBackground,
   Navigator 
 } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
-
+import {Container} from 'native-base';
 export default class LoginView extends Component {
 
   constructor(props) {
@@ -41,11 +43,14 @@ export default class LoginView extends Component {
       // <Navigator initialRoute = {{id: 'forgotPassword'}}
       // renderScene = {this.navigatorRenderScene} />
  
-   
+      
+      <Container>
+      <ImageBackground source={require('../assets/images/3.png')}style={{width: '100%', height: '100%'}}>
       
       <View style={styles.container}>
+       
        <Text style={styles.titleText}>Rizzle</Text>
-
+      
         <View style={styles.inputContainer}>
          {/* <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/> */}
           <TextInput style={styles.inputs}
@@ -75,7 +80,10 @@ export default class LoginView extends Component {
         <TouchableOpacity style={styles.buttonContainer} onPress={() => this.onClickListener('register')}>
             <Text>Register</Text>
         </TouchableOpacity>
+       
       </View>
+      </ImageBackground>
+      </Container>
     );
   }
 }
@@ -85,11 +93,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#e6b800',
+    
   },
   inputContainer: {
       borderBottomColor: '#F5FCFF',
-      backgroundColor: '#e69900',
+      backgroundColor: '#E6ECF2',
       borderRadius:30,
       borderBottomWidth: 1,
       width:250,
@@ -120,10 +128,10 @@ const styles = StyleSheet.create({
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "#cc9900",
+    backgroundColor: "#E6ECF2",
   },
   loginText: {
-    color: 'white',
+    color: 'black',
   },
   titleText:{
       fontSize:100,
