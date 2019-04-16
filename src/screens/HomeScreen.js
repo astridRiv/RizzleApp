@@ -11,8 +11,6 @@ import {
   View,
   Right,
   Body,
-  Icon,
-  Text,
   Title,
 } from 'native-base';
 import Button from 'react-native-flat-button'
@@ -66,7 +64,7 @@ export default class HomeScreen extends React.Component {
 
   getInitialState() {
 
-    return {
+    return  {
       region: {
         latitude: 25.756464,
         longitude: -80.37626,
@@ -82,31 +80,28 @@ export default class HomeScreen extends React.Component {
     return (
 
       <Container style={styles.paraText}>
-      <ImageBackground source={require('../assets/images/3.png')}style={{width: '100%', height: '100%'}}>
+       <ImageBackground source={require('../assets/images/1.png')}style={{width: '100%', height: '100%'}}>
         <Header>
           <Body>
             <View style={styles.mainContainer}>
-            <Title style={styles.headerText}>
-            {this.state.header}
-            </Title>
+              <Title style={styles.headerText}>
+                {this.state.header}
+              </Title>
             </View>
           </Body>
-          <Right />
+          <Right/>
         </Header>
 
         <Content>
           <View style={styles.mainContainer}>
-        <Button 
-                type="primary"
-                onPress={this.goToInstructions}
-                containerStyle={styles.buttonContainer}
-                title="START"
-              
-              >
-                START
-          
-        </Button>
-        </View>
+            <Button 
+              type="primary"
+              onPress={this.goToInstructions}
+              containerStyle={styles.buttonContainer}
+              title="START" >
+                    START
+            </Button>
+          </View>
         </Content>
 
         <MapView style={styles.map}
@@ -130,7 +125,8 @@ export default class HomeScreen extends React.Component {
             />
           ))} */}
         </MapView>
-             <View style={styles.textContainer}>
+
+        <View style={styles.textContainer}>
              <Button 
                 type="secondary"
                 onPress={() => Alert.alert('You have 3 attempts.')}
@@ -138,9 +134,9 @@ export default class HomeScreen extends React.Component {
               >
                 Want a Hint?
           
-        </Button>
-  </View>
-  </ImageBackground>
+             </Button>
+        </View>
+        </ImageBackground>
       </Container>
       
     );
@@ -150,7 +146,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create(
   {
   headerText: {
-    fontFamily: 'Cochin',
+    fontFamily: 'Roboto_medium',
     fontSize: 30,
     fontWeight: 'bold',
     color: '#01afd1',
