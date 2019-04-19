@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity, ImageBackground, ScrollView,Alert,} from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, ImageBackground, Alert,} from 'react-native';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 

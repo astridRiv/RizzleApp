@@ -1,10 +1,5 @@
-
-
-
-
-
-
-
+// import React from 'react';
+// import { Icon } from 'expo';
 
 export default class forgotPassword extends Component<{}>{
    static navigationOptions = {
@@ -25,7 +20,7 @@ export default class forgotPassword extends Component<{}>{
 
 
            }
-       }
+       };
 
    }
    render() {
@@ -45,4 +40,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: "pink"
     },
-})
+});
