@@ -27,7 +27,7 @@ export default class forgotPassword extends Component<{}>{
        return (
            <view style={styles.container}>
                <Text>This forgot password screen :D</Text>
-               <Text>previous screen is {this.state.prevScreenTitle}</Text>
+               <Text>previous screen is</Text>
            </view>
        );
    }

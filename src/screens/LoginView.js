@@ -8,7 +8,7 @@ import {
   Button,
   TouchableHighlight,
   TouchableOpacity,
-  Image,
+  ImageBackground,
   Alert,
   Navigator 
 } from 'react-native';
@@ -40,7 +40,8 @@ export default class LoginView extends Component {
     return (
       // <Navigator initialRoute = {{id: 'forgotPassword'}}
       // renderScene = {this.navigatorRenderScene} />
- 
+      <ImageBackground source={require('../assets/images/3.png')}style={{width: '100%', height: '100%'}}>
+      
    
       
       <View style={styles.container}>
@@ -76,6 +77,7 @@ export default class LoginView extends Component {
             <Text>Register</Text>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     );
   }
 }
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#e6b800',
+    //backgroundColor: '#e6b800',
   },
   inputContainer: {
       borderBottomColor: '#F5FCFF',
