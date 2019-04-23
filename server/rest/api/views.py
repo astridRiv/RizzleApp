@@ -27,7 +27,7 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated, IsOwnerOfRiddle)
 
 class UserCreateView(generics.CreateAPIView):
-    """View to create a user instance"""
+    """View to POST a user instance"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -37,7 +37,7 @@ class UserCreateView(generics.CreateAPIView):
         serializer.save(password=password)
 
 class UserDetailsView(generics.UpdateAPIView):
-    """View to update a user instance."""
+    """View to PUT a user instance."""
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAuthenticated, IsOwnerOfUser)
