@@ -1,40 +1,48 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
 from django.contrib.auth.models import User
-from .permissions import IsOwner
+from django.contrib.auth.hashers import make_password
+from .permissions import IsOwnerOfRiddle, IsOwnerOfUser
 from .serializers import RiddleSerializer, UserSerializer
 from .models import Riddle
 
 class CreateView(generics.ListCreateAPIView):
-    """This class defines the create behavior of our rest api."""
+    """View to POST and GET a riddle instance"""
 
     def get_queryset(self):
         user = self.request.user
         return Riddle.objects.filter(owner=user)
-    
-    serializer_class = RiddleSerializer
-    permission_classes = (permissions.IsAuthenticated, IsOwner)
 
     def perform_create(self, serializer):
         """Save the post data when creating a new riddle."""
         serializer.save(owner=self.request.user)
+    
+    serializer_class = RiddleSerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwnerOfRiddle)
 
 class DetailsView(generics.RetrieveUpdateDestroyAPIView):
-    """This class handles the http GET, PUT and DELETE requests."""
-
+    """View to GET, PUT, and DELETE a riddle instance"""
     queryset = Riddle.objects.all()
     serializer_class = RiddleSerializer
-    permission_classes = (permissions.IsAuthenticated, IsOwner)
+    permission_classes = (permissions.IsAuthenticated, IsOwnerOfRiddle)
 
-class UserCreateView(generics.ListCreateAPIView):
-    """View to create a user"""
+class UserCreateView(generics.CreateAPIView):
+    """View to create a user instance"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def perform_create(self, serializer):
-        User.objects.create_user(username=self.request.username, email=self.request.email, password=self.request.password)
+        password = make_password(self.request.data['password'])
 
-class UserDetailsView(generics.RetrieveAPIView):
-    """View to retrieve a user instance."""
+        serializer.save(password=password)
+
+class UserDetailsView(generics.UpdateAPIView):
+    """View to update a user instance."""
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwnerOfUser)
+
+    def perform_update(self, serializer):
+        password = make_password(self.request.data['password'])
+
+        serializer.save(password=password)

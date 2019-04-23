@@ -32,6 +32,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         """Map this serializer to the default django user model."""
         model = User
-        fields = ('id', 'username', 'password', 'email', 'riddles')
+        fields = ('id', 'email', 'username', 'password', 'riddles')
         read_only_fields = ('id', 'riddles')
-        extra_kwargs = {'password': {'write_only': True}} 
+        extra_kwargs = {
+            'password': {
+                'write_only': True
+                }
+            } 
