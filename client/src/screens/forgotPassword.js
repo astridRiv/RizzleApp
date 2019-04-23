@@ -1,10 +1,5 @@
-
-
-
-
-
-
-
+// import React from 'react';
+// import { Icon } from 'expo';
 
 export default class forgotPassword extends Component<{}>{
    static navigationOptions = {
@@ -25,14 +20,14 @@ export default class forgotPassword extends Component<{}>{
 
 
            }
-       }
+       };
 
    }
    render() {
        return (
            <view style={styles.container}>
                <Text>This forgot password screen :D</Text>
-               <Text>previous screen is {this.state.prevScreenTitle}</Text>
+               <Text>previous screen is</Text>
            </view>
        );
    }
@@ -45,4 +40,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: "pink"
     },
-})
+});

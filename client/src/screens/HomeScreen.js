@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity, ImageBackground, ScrollView,Alert,} from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, ImageBackground, Alert,} from 'react-native';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 
@@ -11,8 +11,6 @@ import {
   View,
   Right,
   Body,
-  Icon,
-  Text,
   Title,
 } from 'native-base';
 import Button from 'react-native-flat-button'
@@ -42,16 +40,7 @@ export default class HomeScreen extends React.Component {
       },
       header: "Explore FIU",
       
-      markers:[
-        {
-          coordinate:{
-            latitude: 25.760146,
-            longitude: -80.373279,
-          },
-          title: "Red Parking Garage",
-          description: "The red place",
-        }
-      ]
+     
     };
   }
 
@@ -66,7 +55,7 @@ export default class HomeScreen extends React.Component {
 
   getInitialState() {
 
-    return {
+    return  {
       region: {
         latitude: 25.756464,
         longitude: -80.37626,
@@ -82,46 +71,53 @@ export default class HomeScreen extends React.Component {
     return (
 
       <Container style={styles.paraText}>
-      <ImageBackground source={require('../assets/images/3.png')}style={{width: '100%', height: '100%'}}>
+       {/* <ImageBackground source={require('../assets/images/1.png')}style={{width: '100%', height: '100%'}}> */}
         <Header>
           <Body>
             <View style={styles.mainContainer}>
-            <Title style={styles.headerText}>
-            {this.state.header}
-            </Title>
+              <Title style={styles.headerText}>
+                {this.state.header}
+              </Title>
             </View>
           </Body>
-          <Right />
+          <Right/>
         </Header>
 
         <Content>
           <View style={styles.mainContainer}>
-        <Button 
-                type="primary"
-                onPress={this.goToInstructions}
-                containerStyle={styles.buttonContainer}
-                title="START"
-              
-              >
-                START
-          
-        </Button>
-        </View>
+            <Button 
+              type="primary"
+              onPress={this.goToInstructions}
+              containerStyle={styles.buttonContainer}
+              title="START" >
+                    START
+            </Button>
+          </View>
         </Content>
 
-        <MapView style={styles.map}
+        <MapView style={{flex:8}}
           region={this.state.region}
-          onRegionChange={() => {
-            let region = {
+         
+             region = {{
               latitude: 25.756464,
               longitude: -80.37626,
               latitudeDelta: lat,
               longitudeDelta: longi,
-            }
+              
+            }}
+            
 
-            this.setState({ region });
-          }} >
+            showUserLocation={true}
+            followsUserLocation={true}
 
+            // {
+            //   this.state.markers.map
+            // }
+            
+            />
+            
+            
+            
           {/* {this.state.markers.map(marker => (
             <Marker
               coordinate={marker.latlng}
@@ -129,8 +125,9 @@ export default class HomeScreen extends React.Component {
               description={marker.description}
             />
           ))} */}
-        </MapView>
-             <View style={styles.textContainer}>
+      
+
+        <View style={styles.textContainer}>
              <Button 
                 type="secondary"
                 onPress={() => Alert.alert('You have 3 attempts.')}
@@ -138,19 +135,47 @@ export default class HomeScreen extends React.Component {
               >
                 Want a Hint?
           
-        </Button>
-  </View>
-  </ImageBackground>
+             </Button>
+        </View>
+        {/* </ImageBackground> */}
       </Container>
       
     );
   }
 
 }
+this.state = {
+  markers:[
+    {
+      coordinate:{
+        latitude: 25.760146,
+        longitude: -80.373279,
+      },
+      title: "Red Parking Garage",
+      description: "The red place",
+    },
+    {
+      title:'hello',
+      coordinates: {
+        latitude: 26.75022,
+        longitude: -81.45656,
+      },
+    }
+  ]
+}
+var greenLibrary = [
+  {
+    latitude: 25.757202,
+    longitude: -80.373902,
+    title: 'FIU Green Library',
+    subtitle: 'Go Here!'
+
+  }
+];
 const styles = StyleSheet.create(
   {
   headerText: {
-    fontFamily: 'Cochin',
+    fontFamily: 'Roboto_medium',
     fontSize: 30,
     fontWeight: 'bold',
     color: '#01afd1',
@@ -162,13 +187,14 @@ const styles = StyleSheet.create(
   },
   paraText:{
     color: '#EFF6F7',
-    backgroundColor: '#A7CFE8',
+    // backgroundColor: '#A7CFE8',
   
   },
   mainContainer:{
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
+   
     
 
   },
