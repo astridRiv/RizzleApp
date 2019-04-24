@@ -47,7 +47,7 @@ That's it!
 
 ## Testing
 
-To run unit tests, run 
+To run unit tests, execute 
 
 ```bash
 python manage.py test
