@@ -69,7 +69,7 @@ The endpoints our client app needs to create, read, update, or destroy database 
 }
 ```
 
-## PUT `users/{id}`
+### PUT `users/{id}`
 - To update the current user. Must be authenticated as the owner of the user their trying to update.
 - Example request
 
@@ -92,7 +92,7 @@ The endpoints our client app needs to create, read, update, or destroy database 
 }
 ```
 
-## POST/GET `riddles/`
+### POST/GET `riddles/`
 - To create a riddle object. GET retrieves all riddle object of the current user. Must be authenticated in
 order to use both methods
 - Example request
@@ -109,7 +109,7 @@ order to use both methods
 }
 ```
 
-## PUT/GET/DELETE `riddles/{id}`
+### PUT/GET/DELETE `riddles/{id}`
 - To retrieve, update, or delete a riddle object. Must be authenticated as the owner of the riddle to use methods
 - Example PUT request
 
