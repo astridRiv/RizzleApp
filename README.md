@@ -3,7 +3,8 @@
 The backend we've decided to use for our app is the Django REST Framework due to it's flexibility building
 Web APIs. By building our app around a client-server model, we've simplified how our app interacts with 
 with a database using representational state transfer, or REST. We created our own Web API so that our
-app can access the resources from the backend by using HTTP methods. 
+app can access the resources from the backend by using HTTP methods. The backend also allows us to use
+authentication and authorization to determine if users accessing these resources have proper credentials.
 
 ## How to get set up
 
