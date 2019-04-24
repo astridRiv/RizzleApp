@@ -9,6 +9,7 @@ class Riddle(models.Model):
     owner = models.ForeignKey('auth.User', related_name='riddles', on_delete=models.CASCADE)
     riddleName = models.CharField(max_length=30, blank=False)
     riddleData = models.TextField(blank=False)
+    riddleAnswer = models.CharField(max_length=30, blank=False)
     latitude = models.FloatField(blank=False)
     longitude = models.FloatField(blank=False)
     isSolved = models.BooleanField(default=False)

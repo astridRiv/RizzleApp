@@ -16,12 +16,14 @@ class ModelTestCase(TestCase):
         user = User.objects.create(username="johndoe")
         self.riddleName = 'Test Riddle'
         self.riddleData = 'This is a test of the riddle model'
+        self.riddleAnswer = 'Answer'
         self.latitude = '0.000000'
         self.longitude = '0.000000'
         self.riddle = Riddle(
             owner=user,
             riddleName=self.riddleName,
             riddleData=self.riddleData, 
+            riddleAnswer=self.riddleAnswer,
             latitude=self.latitude,
             longitude=self.longitude
         )
@@ -51,6 +53,7 @@ class ViewTestCase(TestCase):
             'owner': user.id,
             'riddleName': 'Test Riddle',
             'riddleData': 'This is a test of the riddle model',
+            'riddleAnswer' : 'Answer',
             'latitude' : '0.00000',
             'longitude' : '0.00000',
         }
@@ -81,8 +84,9 @@ class ViewTestCase(TestCase):
         riddle = Riddle.objects.get()
 
         change_riddle = {
-            'riddleName': 'Another Test Riddle',
-            'riddleData': 'This is a test of an updated riddle model',
+            'riddleName' : 'Another Test Riddle',
+            'riddleData' : 'This is a test of an updated riddle model',
+            'riddleAnswer' : 'Another answer',
             'latitude' : '25.759947',
             'longitude' : '-80.374599',
             'isSolved' : 'True',

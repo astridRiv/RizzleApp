@@ -13,6 +13,7 @@ class RiddleSerializer(serializers.ModelSerializer):
             'owner',
             'riddleName',
             'riddleData',
+            'riddleAnswer',
             'latitude',
             'longitude',
             'isSolved',
@@ -21,6 +22,12 @@ class RiddleSerializer(serializers.ModelSerializer):
             'date_modified'
         )
         read_only_fields = ('date_created', 'date_modified')
+
+        extra_kwargs = {
+            'riddleAnswer': {
+                'write_only': True
+            }
+        } 
 
 class UserSerializer(serializers.ModelSerializer):
     """A user serializer to aid in authentication and authorization."""
@@ -37,5 +44,5 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {
                 'write_only': True
-                }
-            } 
+            }
+        } 
